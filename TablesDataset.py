@@ -21,10 +21,10 @@ class TablesDataset(Dataset):
             image_id = filename[:-4]
 
             # skip all images after 100 if we are building the train set
-            if is_train and int(image_id[4:8]) >= 2100:
+            if is_train and int(image_id[4:8]) <= 580:
                 continue
             # skip all images before 100 if we are building the test/val set
-            if not is_train and int(image_id[4:8]) < 1800:
+            if not is_train and int(image_id[4:8]) > 580:
                 continue
             img_path = images_dir + filename
             ann_path = annotations_dir + image_id + '.xml'
