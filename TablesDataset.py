@@ -10,7 +10,7 @@ class TablesDataset(Dataset):
     def load_dataset(self, dataset_dir, is_train=True):
         # define class
         self.add_class("dataset", 1, "column")
-        self.add_class("dataset", 2, "row")
+        # self.add_class("dataset", 2, "row")
 
         # define data locations
         images_dir = dataset_dir + '/images/'
@@ -76,7 +76,8 @@ def extract_boxes(filename):
         coors = [xmin, ymin, xmax, ymax]
 
         class_name = obj.find('name').text
-        boxes.append((coors, class_name))
+        if class_name == 'column':
+            boxes.append((coors, class_name))
 
     # extract image dimensions
     width = int(root.find('.//size/width').text)
