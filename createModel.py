@@ -26,10 +26,10 @@ print('Validation: %d' % len(dataset_val.image_ids))
 model = modellib.MaskRCNN(mode="training", config=config,
                           model_dir=MODEL_DIR)
 
-model.load_weights(COCO_MODEL_PATH, by_name=True,
-                   exclude=["mrcnn_class_logits", "mrcnn_bbox_fc", "mrcnn_bbox", "mrcnn_mask"])
+# model.load_weights(COCO_MODEL_PATH, by_name=True,
+#                    exclude=["mrcnn_class_logits", "mrcnn_bbox_fc", "mrcnn_bbox", "mrcnn_mask"])
 
 model.train(dataset_train, dataset_val,
             learning_rate=config.LEARNING_RATE,
-            epochs=1,
+            epochs=2,
             layers='heads')
